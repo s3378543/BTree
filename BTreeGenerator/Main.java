@@ -37,6 +37,11 @@ public abstract class Main {
 			readBuff.readLine(); //Skip header line
 		} catch (IOException e1) {
 			System.out.println("ERROR: Could not read data from 'Pedestrian_volume__updated_monthly_.csv'");
+			try {
+				readBuff.close();
+			} catch (IOException e) {
+			}
+			return;
 		}
 		trees.add(new BTree(PageSize));
 		String line = ""; //Represents a single line from the file
