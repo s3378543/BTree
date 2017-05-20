@@ -96,7 +96,6 @@ public abstract class Main {
 		System.out.println(trees.size() + " trees generated!");
 		System.out.println("Import Time(mS): " + (treeBuildStart - programStartTime));
 		System.out.println("Build Time(mS): " + (endTime - treeBuildStart));
-		System.out.println("Total Time Taken(mS): " + (endTime - programStartTime));
 		System.out.println();
 		
 		
@@ -128,6 +127,7 @@ public abstract class Main {
 		}
 		long saveEnd = System.currentTimeMillis();
 		System.out.println("Time taken to save trees(mS): " + (saveEnd - saveStart));
+		System.out.println("Total Time Taken(mS): " + (saveEnd - programStartTime));
 		/***************************************************************************/
 
 	}
