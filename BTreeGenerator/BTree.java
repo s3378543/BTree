@@ -136,7 +136,7 @@ public class BTree {
 		while((node != null) && !found) {
 			int nodeVal = node.Index;
 			if(target < nodeVal) {
-				node = node.RightNode;
+				node = node.LeftNode;
 			} else if(target > nodeVal) {
 				node = node.RightNode;
 			} else {
@@ -202,8 +202,6 @@ public class BTree {
     private String toFileString(Node node) {
 		String csv = "";
 		csv += node.Index + ",";
-		csv = csv.substring(0, csv.length() - 1);
-		csv += "\n";
 		if(node.LeftNode != null) {
 			csv += this.toFileString(node.LeftNode);
 		}
