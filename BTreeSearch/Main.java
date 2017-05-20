@@ -133,6 +133,18 @@ public abstract class Main {
 				if(line.equalsIgnoreCase("x")) {
 					readBuff.close();
 					break;
+				} else if (line.equals("Head")) {
+					long searchStartTime = System.currentTimeMillis();
+					ArrayList<JSONObject> returnedData = new ArrayList<JSONObject>();
+					for(BTree tree:BTreeList) {
+						returnedData.addAll(tree.HeadNode.getRids());
+					}
+					for(JSONObject obj:returnedData) {
+						System.out.println(obj.toString());
+					}
+					long searchEndTime = System.currentTimeMillis();
+					System.out.println(returnedData.size() + " data points found.");
+					System.out.println("That search took(mS): " + (searchEndTime - searchStartTime));
 				} else {
 					long searchStartTime = System.currentTimeMillis();
 					int target = Integer.parseInt(line);
@@ -150,10 +162,10 @@ public abstract class Main {
 					}else if(returnedData == null) {
 						System.out.println("0 results found");
 					} else {
-						System.out.println(returnedData.size() + " data points found.");
 						for(JSONObject obj:returnedData) {
 							System.out.println(obj.toString());
 						}
+						System.out.println(returnedData.size() + " data points found.");
 					}
 					long searchEndTime = System.currentTimeMillis();
 					System.out.println("That search took(mS): " + (searchEndTime - searchStartTime));
