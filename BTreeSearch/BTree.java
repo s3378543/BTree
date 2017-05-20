@@ -194,4 +194,21 @@ public class BTree {
 		}
 		return node.Index;
     }
+    
+    /*Returns index number of node with the highest number or rids attached*/
+    public int getLargestNode() {
+    	return getLargestNode(this.HeadNode, this.HeadNode).Index;
+    }
+    
+    private Node getLargestNode(Node max, Node node) {
+    	if(node != null)
+    	{
+    		if(node.getNumRids() > max.getNumRids()) {
+    			max = node;
+    		}
+    		max = getLargestNode(max, node.LeftNode);
+    		max = getLargestNode(max, node.RightNode);
+    	}
+    	return max;
+    }
 }
