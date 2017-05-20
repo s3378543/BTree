@@ -11,6 +11,7 @@ import org.json.JSONObject;
 public abstract class Main {
 
 	public static void main(String[] args) {
+		long programStartTime = System.currentTimeMillis();
 		BufferedReader readBuff = null;
 		File csv = new File("Pedestrian_volume__updated_monthly_.csv");
 		int PageSize;
@@ -43,6 +44,7 @@ public abstract class Main {
 			}
 			return;
 		}
+		long treeBuildStart = System.currentTimeMillis();
 		trees.add(new BTree(PageSize));
 		String line = ""; //Represents a single line from the file
 		int EntryCount = 0;
@@ -88,13 +90,18 @@ public abstract class Main {
 				System.out.println("ERROR: Could not read data from 'Pedestrian_volume__updated_monthly_.csv'");
 			}
 		}
+		long endTime = System.currentTimeMillis();
 		System.out.println("Trees successfully built!");
 		System.out.println(EntryCount + " records entered!");
 		System.out.println(trees.size() + " trees generated!");
+		System.out.println("Import Time(mS): " + (treeBuildStart - programStartTime));
+		System.out.println("Build Time(mS): " + (endTime - treeBuildStart));
+		System.out.println("Total Time Taken(mS): " + (endTime - programStartTime));
 		System.out.println();
 		
 		
 		/**Code section below saves the BTree to a series of CSV files**/
+		long saveStart = System.currentTimeMillis();
 		System.out.println("Saving trees to files");
 		BufferedWriter writeBuff = null;
 		int count = 0;
@@ -119,6 +126,8 @@ public abstract class Main {
 				System.out.println("Could not close buffer to file: " + fileName);
 			}
 		}
+		long saveEnd = System.currentTimeMillis();
+		System.out.println("Time taken to save trees(mS): " + (saveEnd - saveStart));
 		/***************************************************************************/
 
 	}
