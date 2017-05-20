@@ -120,40 +120,5 @@ public abstract class Main {
 			}
 		}
 		/***************************************************************************/
-		
-		/**Preliminary code within this program to find indexed values**/
-		/*System.out.println("Please enter an Hourly_Counts to find all records of!");
-		InputStream inStream = System.in;
-		readBuff = new BufferedReader(new InputStreamReader(inStream));
-		
-		while(true) {
-			try {
-				line = readBuff.readLine();
-				if(line.equalsIgnoreCase("x")) {
-					readBuff.close();
-					break;
-				} else {
-					int target = Integer.parseInt(line);
-					ArrayList<JSONObject> returnedData = new ArrayList<JSONObject>();
-					for(BTree tree:trees) {
-						if(tree.doesIndexExist(target, tree.HeadNode)) {
-							 returnedData = tree.getNodesByIndex(target, tree.HeadNode);
-							 break;
-						}
-					}
-					if(returnedData == null) {
-						System.out.println("0 results found");
-					} else {
-						System.out.println(returnedData.size() + " data points found.");
-						for(JSONObject obj:returnedData) {
-							System.out.println(obj.toString());
-						}
-					}
-				}
-			} catch (IOException ie) {
-				System.out.println("ERROR: Could not read data from command line");
-			}
-		}*/
-		/***************************************************************************/
 	}
 }
