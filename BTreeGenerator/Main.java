@@ -104,10 +104,10 @@ public abstract class Main {
 		System.out.println("Saving trees to files");
 		BufferedWriter writeBuff = null;
 		int count = 0;
-		File dir = new File("/Trees/" + PageSize + "/");
-		dir.mkdir();
+		File dir = new File("/home/ec2-user/Trees/" + PageSize + "/");
+		dir.mkdirs();
 		for(BTree tree:trees) {
-			String fileName = "/Trees/" + PageSize + "/BTree" + count + ".csv";
+			String fileName = "/home/ec2-user/Trees/" + PageSize + "/BTree" + count + ".csv";
 			try {
 				System.out.print("Tree: " + count);
 				writeBuff = new BufferedWriter(new FileWriter(fileName));
