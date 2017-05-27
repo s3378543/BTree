@@ -85,7 +85,7 @@ public abstract class Main {
 		System.out.println("Data read!\n");
 		
 		System.out.println("Building trees of size " + PageSize + " from saved files...");	
-		File folder = new File("/Trees/" + PageSize + "/");
+		File folder = new File("/home/ec2-user/Trees/" + PageSize + "/");
 		File[] listOfTrees = folder.listFiles();
 		if(listOfTrees == null) {
 			System.out.println("Could not build trees of size " + PageSize + ".\n No such trees found!");
@@ -99,7 +99,7 @@ public abstract class Main {
 				try {
 					fileBuffer = new BufferedReader(new FileReader(tree));
 					data = fileBuffer.readLine();
-					String[] nodes = data.split(",");
+					String[] nodes = data.split(" ");
 					BTreeList.add(new BTree());
 					for(String node:nodes) {
 						int iNode = Integer.parseInt(node);
